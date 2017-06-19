@@ -34,8 +34,16 @@ describe("Header entity", function() {
 			delete this.headers;
 		});
 
-		it("is for Header models");
-		it("contains one model per navigation menu item");
+		it("is for Header models", function() {
+			expect(this.headers.model).to.equal(ContactManager.Entities.Header);
+		});
+		it("contains one model per navigation menu item", function() {
+			expect(this.headers).to.have.length(2);
+			let entries = this.headers.pluck("name");
+			expect(entries).to.contain("About");
+			expect(entries).to.contain("Contacts");
+		});
+
 		it("is single selectable");
 		it("can be fetched with a 'header:entities' request");
 		it("is a singleton when obtained by request");
