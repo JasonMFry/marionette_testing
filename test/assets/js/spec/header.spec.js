@@ -1,11 +1,27 @@
 describe("Header entity", function() {
     describe("Model", function() {
-        it("defines selection functions", function() {
-            let header = new ContactManager.Entities.Header();
-            expect(typeof(header.select)).to.equal("function");
-            expect(typeof(header.deselect)).to.equal("function");
+		beforeEach(function() {
+			this.header = new ContactManager.Entities.Header();
+		});
+
+		afterEach(function() {
+			delete this.header;
+		});
+
+        it("defines (de)selection functions", function() {
+            expect(typeof(this.header.select)).to.equal("function");
+            expect(typeof(this.header.deselect)).to.equal("function");
         });
-        it("is selectable");
-        it("is not 'selected' by default");
+
+        it("is selectable", function() {
+			this.header.select();
+			expect(this.header.selected).to.be.true;
+			this.header.deselect();
+			expect(this.header.selected).to.be.false;
+		});
+
+        it("is not 'selected' by default", function() {
+			expect(this.header.selected).to.not.be.ok;
+		});
     });
 });
