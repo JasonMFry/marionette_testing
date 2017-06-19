@@ -24,4 +24,20 @@ describe("Header entity", function() {
 			expect(this.header.selected).to.not.be.ok;
 		});
     });
+
+	describe("Collection", function() {
+		beforeEach(function() {
+			this.headers = ContactManager.Entities._initializeHeaders();
+		});
+
+		afterEach(function() {
+			delete this.headers;
+		});
+
+		it("is for Header models");
+		it("contains one model per navigation menu item");
+		it("is single selectable");
+		it("can be fetched with a 'header:entities' request");
+		it("is a singleton when obtained by request");
+	});
 });
